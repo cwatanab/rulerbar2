@@ -1,0 +1,98 @@
+{
+  "extensionName": {
+    "message": "ルーラーバー 2 (Ruler Bar 2)"
+  },
+  "extensionDescription": {
+    "message": "メール作成ウィンドウにルーラーを表示します。"
+  },
+  "optionsTitle": {
+    "message": "ルーラーバー 2 の設定"
+  },
+  "optionsIntro": {
+    "message": "メール作成ウィンドウに表示するルーラーの見え方を調整します。"
+  },
+  "displaySection": {
+    "message": "表示"
+  },
+  "measurementSection": {
+    "message": "文字数の計算"
+  },
+  "advancedSection": {
+    "message": "詳細"
+  },
+  "physicalPositioningLabel": {
+    "message": "カーソル位置を見た目の位置で正確に追跡する"
+  },
+  "physicalPositioningHelp": {
+    "message": "Thunderbird から取得できるカーソル矩形を使い、取得できない場合は論理列で補完します。"
+  },
+  "shouldRoopLabel": {
+    "message": "折り返し桁でカーソル表示をループする"
+  },
+  "shouldRoopHelp": {
+    "message": "指定文字数で折り返すテキストメールの作成時に有効です。"
+  },
+  "columnLevel3Label": {
+    "message": "文字数表示の間隔"
+  },
+  "columnLevel3Help": {
+    "message": "何文字ごとに数字ラベルを表示するかを指定します。"
+  },
+  "columnLevel1Label": {
+    "message": "小目盛りの間隔"
+  },
+  "columnLevel1Help": {
+    "message": "何文字ごとに小さな目盛りを表示するかを指定します。"
+  },
+  "scaleLabel": {
+    "message": "目盛りの拡大率"
+  },
+  "scaleHelp": {
+    "message": "ルーラーの目盛り間隔を見た目上で調整します。"
+  },
+  "cursorOpacityLabel": {
+    "message": "カーソルの透過率"
+  },
+  "cursorOpacityHelp": {
+    "message": "現在位置インジケーターの見え方を調整します。"
+  },
+  "maxCountLabel": {
+    "message": "最大表示文字数"
+  },
+  "maxCountHelp": {
+    "message": "折り返し桁が短い場合に生成する目盛りの上限です。"
+  },
+  "tabWidthLabel": {
+    "message": "タブ幅"
+  },
+  "tabWidthHelp": {
+    "message": "タブ文字を何文字分として数えるかを指定します。"
+  },
+  "nonAsciiWidthLabel": {
+    "message": "非 ASCII 文字の幅"
+  },
+  "nonAsciiWidthHelp": {
+    "message": "日本語などの非 ASCII 文字を何文字分として数えるかを指定します。"
+  },
+  "columnsUnit": {
+    "message": "文字"
+  },
+  "percentUnit": {
+    "message": "%"
+  },
+  "saveButton": {
+    "message": "保存"
+  },
+  "resetButton": {
+    "message": "デフォルトに戻す"
+  },
+  "savedStatus": {
+    "message": "保存しました"
+  },
+  "defaultsStatus": {
+    "message": "デフォルト値を復元しました"
+  },
+  "saveFailedStatus": {
+    "message": "設定を保存できませんでした。詳細はアドオンのデバッグコンソールを確認してください。"
+  }
+}

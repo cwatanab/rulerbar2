@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="options.css">
+    <script defer src="options.js"></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1 data-i18n="optionsTitle">Ruler Bar 2 Settings</h1>
+      <p data-i18n="optionsIntro">Adjust how the ruler is displayed in message compose windows.</p>
+    </header>
+
+    <form id="options-form">
+      <section class="panel">
+        <h2 data-i18n="displaySection">Display</h2>
+        <label class="switch-row">
+          <input id="physicalPositioning" type="checkbox">
+          <span>
+            <strong data-i18n="physicalPositioningLabel">Track the caret by exact visual position</strong>
+            <small data-i18n="physicalPositioningHelp">Uses the caret rectangle when Thunderbird exposes it, with a logical-column fallback.</small>
+          </span>
+        </label>
+        <label class="switch-row">
+          <input id="shouldRoop" type="checkbox">
+          <span>
+            <strong data-i18n="shouldRoopLabel">Loop the cursor at the wrap column</strong>
+            <small data-i18n="shouldRoopHelp">Useful for plain-text composition where lines wrap at the configured column.</small>
+          </span>
+        </label>
+      </section>
+
+      <section class="panel">
+        <h2 data-i18n="measurementSection">Measurement</h2>
+        <div class="setting-grid">
+          <label class="field" for="tabWidth">
+            <span data-i18n="tabWidthLabel">Tab width</span>
+            <small data-i18n="tabWidthHelp">Logical width used when counting tab characters.</small>
+          </label>
+          <div class="number-field">
+            <input id="tabWidth" type="number" min="1" step="1">
+            <span data-i18n="columnsUnit">columns</span>
+          </div>
+
+          <label class="field" for="nonAsciiWidth">
+            <span data-i18n="nonAsciiWidthLabel">Non-ASCII width</span>
+            <small data-i18n="nonAsciiWidthHelp">Logical width used for non-ASCII characters.</small>
+          </label>
+          <div class="number-field">
+            <input id="nonAsciiWidth" type="number" min="1" step="1">
+            <span data-i18n="columnsUnit">columns</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 data-i18n="advancedSection">Advanced</h2>
+        <div class="setting-grid">
+          <label class="field" for="columnLevel3">
+            <span data-i18n="columnLevel3Label">Numbered mark interval</span>
+            <small data-i18n="columnLevel3Help">Show numeric labels every N columns.</small>
+          </label>
+          <div class="number-field">
+            <input id="columnLevel3" type="number" min="1" step="1">
+            <span data-i18n="columnsUnit">columns</span>
+          </div>
+
+          <label class="field" for="columnLevel1">
+            <span data-i18n="columnLevel1Label">Minor mark interval</span>
+            <small data-i18n="columnLevel1Help">Show small tick marks every N columns.</small>
+          </label>
+          <div class="number-field">
+            <input id="columnLevel1" type="number" min="1" step="1">
+            <span data-i18n="columnsUnit">columns</span>
+          </div>
+
+          <label class="field" for="scale">
+            <span data-i18n="scaleLabel">Ruler scale</span>
+            <small data-i18n="scaleHelp">Changes the visual spacing of ruler marks.</small>
+          </label>
+          <div class="number-field">
+            <input id="scale" type="number" min="1" step="1">
+            <span data-i18n="percentUnit">%</span>
+          </div>
+
+          <label class="field" for="cursorOpacity">
+            <span data-i18n="cursorOpacityLabel">Cursor opacity</span>
+            <small data-i18n="cursorOpacityHelp">Adjusts the visibility of the current-position indicator.</small>
+          </label>
+          <div class="number-field">
+            <input id="cursorOpacity" type="number" min="10" max="100" step="5">
+            <span data-i18n="percentUnit">%</span>
+          </div>
+
+          <label class="field" for="maxCount">
+            <span data-i18n="maxCountLabel">Maximum columns</span>
+            <small data-i18n="maxCountHelp">Upper limit for generated marks when the wrap column is short.</small>
+          </label>
+          <div class="number-field">
+            <input id="maxCount" type="number" min="1" step="1">
+            <span data-i18n="columnsUnit">columns</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="primary" type="submit" data-i18n="saveButton">Save</button>
+        <button id="reset-defaults" type="button" data-i18n="resetButton">Reset to defaults</button>
+        <span id="status" role="status"></span>
+      </div>
+    </form>
+  </body>
+</html>

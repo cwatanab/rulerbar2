@@ -1,0 +1,36 @@
+[
+  {
+    "namespace": "rulerBar",
+    "functions": [
+      {
+        "name": "getOptions",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "setOptions",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "object",
+            "properties": {
+              "tabWidth": { "type": "integer", "minimum": 1 },
+              "maxCount": { "type": "integer", "minimum": 1 },
+              "nonAsciiWidth": { "type": "integer", "minimum": 1 },
+              "shouldRoop": { "type": "boolean" },
+              "scale": { "type": "integer", "minimum": 1 },
+              "columnLevel3": { "type": "integer", "minimum": 1 },
+              "columnLevel1": { "type": "integer", "minimum": 1 },
+              "physicalPositioning": { "type": "boolean" },
+              "cursorOpacity": { "type": "integer", "minimum": 10, "maximum": 100 }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extensionName__",
+  "version": "0.6.12",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
+  "author": "cwatanab",
+  "icons": {
+    "32": "icon.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "rulerbar@piro.sakura.ne.jp",
+      "strict_min_version": "128.0"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
+  },
+  "experiment_apis": {
+    "rulerBar": {
+      "schema": "api/rulerbar/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["rulerBar"]],
+        "script": "api/rulerbar/implementation.js",
+        "events": ["startup"]
+      }
+    }
+  }
+}

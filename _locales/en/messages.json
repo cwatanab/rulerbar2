@@ -1,0 +1,98 @@
+{
+  "extensionName": {
+    "message": "Ruler Bar 2"
+  },
+  "extensionDescription": {
+    "message": "Shows a ruler in the Thunderbird message compose window."
+  },
+  "optionsTitle": {
+    "message": "Ruler Bar 2 Settings"
+  },
+  "optionsIntro": {
+    "message": "Adjust how the ruler is displayed in message compose windows."
+  },
+  "displaySection": {
+    "message": "Display"
+  },
+  "measurementSection": {
+    "message": "Measurement"
+  },
+  "advancedSection": {
+    "message": "Advanced"
+  },
+  "physicalPositioningLabel": {
+    "message": "Track the caret by exact visual position"
+  },
+  "physicalPositioningHelp": {
+    "message": "Uses the caret rectangle when Thunderbird exposes it, with a logical-column fallback."
+  },
+  "shouldRoopLabel": {
+    "message": "Loop the cursor at the wrap column"
+  },
+  "shouldRoopHelp": {
+    "message": "Useful for plain-text composition where lines wrap at the configured column."
+  },
+  "columnLevel3Label": {
+    "message": "Numbered mark interval"
+  },
+  "columnLevel3Help": {
+    "message": "Show numeric labels every N columns."
+  },
+  "columnLevel1Label": {
+    "message": "Minor mark interval"
+  },
+  "columnLevel1Help": {
+    "message": "Show small tick marks every N columns."
+  },
+  "scaleLabel": {
+    "message": "Ruler scale"
+  },
+  "scaleHelp": {
+    "message": "Changes the visual spacing of ruler marks."
+  },
+  "cursorOpacityLabel": {
+    "message": "Cursor opacity"
+  },
+  "cursorOpacityHelp": {
+    "message": "Adjusts the visibility of the current-position indicator."
+  },
+  "maxCountLabel": {
+    "message": "Maximum columns"
+  },
+  "maxCountHelp": {
+    "message": "Upper limit for generated marks when the wrap column is short."
+  },
+  "tabWidthLabel": {
+    "message": "Tab width"
+  },
+  "tabWidthHelp": {
+    "message": "Logical width used when counting tab characters."
+  },
+  "nonAsciiWidthLabel": {
+    "message": "Non-ASCII width"
+  },
+  "nonAsciiWidthHelp": {
+    "message": "Logical width used for non-ASCII characters."
+  },
+  "columnsUnit": {
+    "message": "columns"
+  },
+  "percentUnit": {
+    "message": "%"
+  },
+  "saveButton": {
+    "message": "Save"
+  },
+  "resetButton": {
+    "message": "Reset to defaults"
+  },
+  "savedStatus": {
+    "message": "Saved"
+  },
+  "defaultsStatus": {
+    "message": "Defaults restored"
+  },
+  "saveFailedStatus": {
+    "message": "Could not save settings. Open the add-on debug console for details."
+  }
+}
