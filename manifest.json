@@ -10,8 +10,9 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "rulerbar@piro.sakura.ne.jp",
-      "strict_min_version": "128.0"
+      "id": "{c8b9d3e2-4a1f-4b5c-9d2a-8f7e6a1b2c3d}",
+      "strict_min_version": "128.0",
+      "strict_max_version": "170.*"
     }
   },
   "options_ui": {
