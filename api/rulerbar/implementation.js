@@ -55,7 +55,12 @@ function setPref(name, type, value) {
     Services.prefs.setBoolPref(name, Boolean(value));
     return;
   }
-  Services.prefs.setIntPref(name, Math.max(1, Number.parseInt(value, 10) || 1));
+
+  let normalized = Math.max(1, Number.parseInt(value, 10) || 1);
+  if (name == "extensions.rulerbar.cursorOpacity") {
+    normalized = Math.min(100, Math.max(10, normalized));
+  }
+  Services.prefs.setIntPref(name, normalized);
 }
 
 function getOptions() {
@@ -109,6 +114,8 @@ class RulerBarInstance {
     this.wrapLength = this.getWrapLength();
     this.unitWidth = 8;
     this.contentOffset = 0;
+    this.originalBody = null;
+    this.originalBodyWidth = "";
 
     this.prefObserver = {
       observe: (_subject, topic) => {
@@ -156,8 +163,11 @@ class RulerBarInstance {
   }
 
   createUI() {
-    if (this.document.getElementById("ruler-bar-container")) {
-      return;
+    for (const id of ["ruler-bar-container", "ruler-bar-style", "ruler-wrap-popup"]) {
+      const staleNode = this.document.getElementById(id);
+      if (staleNode && staleNode.parentNode) {
+        staleNode.parentNode.removeChild(staleNode);
+      }
     }
 
     this.style = makeElement(this.document, "style", { id: "ruler-bar-style" });
@@ -427,6 +437,7 @@ class RulerBarInstance {
   }
 
   onEditorReload() {
+    this.restoreBodyWidth();
     this.editorWindow = this.editor.contentWindow;
     this.editorDocument = this.editor.contentDocument;
     this.body = this.editorDocument && this.editorDocument.body;
@@ -444,7 +455,29 @@ class RulerBarInstance {
     if (!this.body) {
       return;
     }
+    this.rememberBodyWidth();
     this.body.style.width = this.wrapLength > 0 ? `${this.wrapLength}ch` : "";
+  }
+
+  rememberBodyWidth() {
+    if (!this.body || this.originalBody == this.body) {
+      return;
+    }
+    this.originalBody = this.body;
+    this.originalBodyWidth = this.body.style.width;
+  }
+
+  restoreBodyWidth() {
+    if (!this.originalBody) {
+      return;
+    }
+    try {
+      this.originalBody.style.width = this.originalBodyWidth;
+    } catch (error) {
+      // The compose document may already have been unloaded.
+    }
+    this.originalBody = null;
+    this.originalBodyWidth = "";
   }
 
   getColumnWidth(computed) {
@@ -698,8 +731,8 @@ class RulerBarInstance {
     this.updateWrapMarker(column);
     this.popup.hidden = false;
     this.popup.textContent = String(column);
-    this.popup.style.left = `${event.screenX + 12}px`;
-    this.popup.style.top = `${event.screenY + 12}px`;
+    this.popup.style.left = `${event.clientX + 12}px`;
+    this.popup.style.top = `${event.clientY + 12}px`;
   }
 
   endDrag(event) {
@@ -737,6 +770,7 @@ class RulerBarInstance {
     this.detachEditorListeners();
 
     this.removePrefObservers();
+    this.restoreBodyWidth();
 
     for (const node of [this.container, this.popup, this.style]) {
       if (node && node.parentNode) {

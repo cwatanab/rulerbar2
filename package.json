@@ -1,0 +1,12 @@
+{
+  "name": "rulerbar2",
+  "version": "0.6.12",
+  "private": true,
+  "description": "Thunderbird WebExtension ruler for message compose windows.",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "build": "pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/build.ps1",
+    "smoke": "npm run validate && npm run build"
+  },
+  "license": "MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later"
+}
