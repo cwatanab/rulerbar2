@@ -1,6 +1,6 @@
 {
   "name": "rulerbar2",
-  "version": "0.6.12",
+  "version": "0.6.13",
   "private": true,
   "description": "Thunderbird WebExtension ruler for message compose windows.",
   "scripts": {
