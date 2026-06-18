@@ -20,6 +20,53 @@ It adds a ruler to Thunderbird message compose windows so you can see the curren
 - Plain-text composition with a monospace font gives the most predictable result.
 - HTML composition and proportional fonts are supported as best-effort visual guides, but the ruler can differ from the exact rendered text position.
 
+## Distribution
+
+Ruler Bar 2 is **not currently listed on addons.thunderbird.net (ATN)**.
+The add-on uses a [Thunderbird Experiment API](https://developer.thunderbird.net/add-ons/mailextensions/experiments)
+to inject the ruler UI into compose windows, and ATN is not accepting new
+submissions that use Experiment APIs. As a result, Ruler Bar 2 is distributed
+directly from this repository's [GitHub Releases](../../releases).
+
+### Install from a GitHub Release
+
+1. Open the [Releases page](../../releases) for this repository.
+2. Download the latest `ruler_bar_tb150.xpi` (or `ruler_bar_tb150.zip`) asset.
+3. In Thunderbird, open the add-on manager (`≡` menu → **Add-ons and Themes**).
+4. Click the gear icon and choose **Install Add-on From File…**.
+5. Select the downloaded XPI/ZIP and confirm the prompt to install an
+   unsigned/third-party add-on.
+6. Restart any open compose windows so the ruler attaches to the editor.
+
+### Releases
+
+Releases are tagged with the add-on version (for example `v0.7.0`) and
+attach the XPI/ZIP produced by `npm run build`. The tag, title, and notes
+follow this format:
+
+- **Tag**: `v<version>` matching `manifest.json` (for example `v0.7.0`).
+- **Title**: `Ruler Bar 2 <version>`.
+- **Body**: short list of user-visible changes; link the diff against the
+  previous tag (for example `…compare/v0.6.13...v0.7.0`) so reviewers can
+  verify the change set.
+
+To create a release, after merging the version bump and running
+`npm run build`:
+
+```powershell
+npm run build
+git tag v0.7.0
+git push origin v0.7.0
+gh release create v0.7.0 dist/ruler_bar_tb150.xpi dist/ruler_bar_tb150.zip \
+  --title "Ruler Bar 2 0.7.0" \
+  --notes-file - <<'EOF'
+See the commit history for the full change set.
+
+- Previous release: https://github.com/cwatanab/rulerbar2/releases/tag/v0.6.13
+- Diff: https://github.com/cwatanab/rulerbar2/compare/v0.6.13...v0.7.0
+EOF
+```
+
 ## Settings
 
 | Setting | Default | Description |
@@ -60,6 +107,9 @@ Long description:
 - WebExtension remake: cwatanab
 - This version uses a Manifest V3 WebExtension with a Thunderbird Experiment API.
 - Legacy XUL overlay files, `install.rdf`, and `chrome.manifest` are not used.
+- Ruler Bar 2 is not listed on addons.thunderbird.net (ATN) because ATN is not
+  accepting new submissions that use Experiment APIs. See
+  [Distribution](#distribution) for the GitHub Releases install path.
 
 ## Build
 
@@ -109,6 +159,53 @@ Thunderbird のメール作成ウィンドウにルーラーを表示し、現�
 - プレーンテキストメールを等幅フォントで作成する場合に、もっとも安定した表示になります。
 - HTML メールやプロポーショナルフォントでも目安として表示できますが、実際の描画位置と完全には一致しない場合があります。
 
+## 配布
+
+Ruler Bar 2 は現在 **addons.thunderbird.net (ATN) には公開していません**。
+本アドオンは [Thunderbird Experiment API](https://developer.thunderbird.net/add-ons/mailextensions/experiments)
+をルーラーの UI 注入に使用しており、ATN では Experiment API を利用する新規
+アドオンの受付を停止しているためです。代わりに、本リポジトリの
+[GitHub Releases](../../releases) から直接配布しています。
+
+### GitHub Release からインストールする手順
+
+1. このリポジトリの [Releases ページ](../../releases) を開きます。
+2. 最新の `ruler_bar_tb150.xpi` (または `ruler_bar_tb150.zip`) をダウンロード
+   します。
+3. Thunderbird のアドオンマネージャ (`≡` メニュー → **アドオンとテーマ**) を
+   開きます。
+4. 歯車アイコンから **ファイルからアドオンをインストール…** を選択します。
+5. ダウンロードした XPI/ZIP を選び、サードパーティ製アドオンのインストール
+   確認に同意します。
+6. 開いている作成ウィンドウがあれば再起動し、ルーラーを再接続します。
+
+### リリースの作成
+
+リリースはアドオンのバージョン (`v0.7.0` など) でタグ付けし、`npm run build` で
+生成された XPI/ZIP をアタッチします。タグ・タイトル・本文は次の形式に揃えて
+います。
+
+- **タグ**: `manifest.json` のバージョンと一致する `v<version>` (例: `v0.7.0`)。
+- **タイトル**: `Ruler Bar 2 <version>`。
+- **本文**: ユーザー視点の変更点を箇条書きし、前のタグとの差分リンク
+  (例: `…compare/v0.6.13...v0.7.0`) を貼ります。
+
+バージョンをバンプしてマージした後、次のようにリリースを作成します。
+
+```powershell
+npm run build
+git tag v0.7.0
+git push origin v0.7.0
+gh release create v0.7.0 dist/ruler_bar_tb150.xpi dist/ruler_bar_tb150.zip `
+  --title "Ruler Bar 2 0.7.0" `
+  --notes-file - <<'EOF'
+変更点の全一覧はコミット履歴を参照してください。
+
+- 前のリリース: https://github.com/cwatanab/rulerbar2/releases/tag/v0.6.13
+- 差分: https://github.com/cwatanab/rulerbar2/compare/v0.6.13...v0.7.0
+EOF
+```
+
 ## 設定項目
 
 | 設定 | 既定値 | 説明 |
@@ -149,6 +246,9 @@ Thunderbird のメール作成ウィンドウにルーラーを表示し、現�
 - WebExtension 版リメイク: cwatanab
 - この版は Manifest V3 WebExtension と Thunderbird Experiment API を使用しています。
 - 旧 XUL overlay ファイル、`install.rdf`、`chrome.manifest` は使用していません。
+- ATN が Experiment API を利用する新規アドオンを受付けていないため、Ruler Bar 2
+  は ATN には公開していません。インストール手順は [配布](#配布) セクションを
+  参照してください。
 
 ## ビルド
 

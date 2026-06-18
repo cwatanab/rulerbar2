@@ -2,3 +2,8 @@ dist/
 *.xpi
 *.zip
 
+# Editor / indexer caches
+.codegraph/
+.serena/
+.cgcignore
+
