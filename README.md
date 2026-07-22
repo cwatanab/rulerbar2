@@ -16,7 +16,7 @@ It adds a ruler to Thunderbird message compose windows so you can see the curren
 
 ## Compatibility
 
-- The manifest currently allows Thunderbird 128 through 152.*.
+- The manifest currently allows Thunderbird 128 through 200.*.
 - Plain-text composition with a monospace font gives the most predictable result.
 - HTML composition and proportional fonts are supported as best-effort visual guides, but the ruler can differ from the exact rendered text position.
 
@@ -155,7 +155,7 @@ Thunderbird のメール作成ウィンドウにルーラーを表示し、現�
 
 ## 対応バージョン
 
-- manifest では Thunderbird 128 から 152.* までを許可しています。
+- manifest では Thunderbird 128 から 200.* までを許可しています。
 - プレーンテキストメールを等幅フォントで作成する場合に、もっとも安定した表示になります。
 - HTML メールやプロポーショナルフォントでも目安として表示できますが、実際の描画位置と完全には一致しない場合があります。
 
