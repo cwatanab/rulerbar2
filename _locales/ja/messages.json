@@ -1,12 +1,12 @@
 {
   "extensionName": {
-    "message": "ルーラーバー 2 (Ruler Bar 2)"
+    "message": "ルーラーバー (Ruler Bar)"
   },
   "extensionDescription": {
     "message": "Thunderbird のメール作成ウィンドウに、カーソル位置と折り返し桁を示す設定可能なルーラーを表示します。"
   },
   "optionsTitle": {
-    "message": "ルーラーバー 2 の設定"
+    "message": "ルーラーバーの設定"
   },
   "optionsIntro": {
     "message": "メール作成ウィンドウに表示するルーラーの見え方と文字幅の数え方を調整します。"

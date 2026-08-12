@@ -1,12 +1,12 @@
 {
   "extensionName": {
-    "message": "Ruler Bar 2"
+    "message": "Ruler Bar"
   },
   "extensionDescription": {
     "message": "Adds a configurable ruler to Thunderbird compose windows, showing the caret position and wrap column."
   },
   "optionsTitle": {
-    "message": "Ruler Bar 2 Settings"
+    "message": "Ruler Bar Settings"
   },
   "optionsIntro": {
     "message": "Adjust the ruler display and character-width counting used in message compose windows."

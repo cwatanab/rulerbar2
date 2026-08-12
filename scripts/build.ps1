@@ -2,10 +2,10 @@ $ErrorActionPreference = "Stop"
 
 $root = Split-Path -Parent $PSScriptRoot
 $dist = Join-Path $root "dist"
-$zip = Join-Path $dist "ruler_bar_tb150.zip"
-$xpi = Join-Path $dist "ruler_bar_tb150.xpi"
-$tempDir = Join-Path ([System.IO.Path]::GetTempPath()) "rulerbar2"
-$tempZip = Join-Path $tempDir ("ruler_bar_tb150.{0}.zip" -f [Guid]::NewGuid().ToString("N"))
+$zip = Join-Path $dist "ruler_bar.zip"
+$xpi = Join-Path $dist "ruler_bar.xpi"
+$tempDir = Join-Path ([System.IO.Path]::GetTempPath()) "rulerbar"
+$tempZip = Join-Path $tempDir ("ruler_bar.{0}.zip" -f [Guid]::NewGuid().ToString("N"))
 
 New-Item -ItemType Directory -Force -Path $dist | Out-Null
 New-Item -ItemType Directory -Force -Path $tempDir | Out-Null

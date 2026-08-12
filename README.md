@@ -1,6 +1,6 @@
-# Ruler Bar 2
+# Ruler Bar
 
-Ruler Bar 2 is a Thunderbird WebExtension remake of the legacy Ruler Bar add-on.
+Ruler Bar is a Thunderbird WebExtension remake of the legacy Ruler Bar add-on.
 
 It adds a ruler to Thunderbird message compose windows so you can see the current caret position and the configured plain-text wrap column while writing. It is intended for users who compose fixed-width plain-text messages, align text by column, or want a visible guide for Thunderbird's wrap length setting.
 
@@ -22,16 +22,16 @@ It adds a ruler to Thunderbird message compose windows so you can see the curren
 
 ## Distribution
 
-Ruler Bar 2 is **not currently listed on addons.thunderbird.net (ATN)**.
+Ruler Bar is **not currently listed on addons.thunderbird.net (ATN)**.
 The add-on uses a [Thunderbird Experiment API](https://developer.thunderbird.net/add-ons/mailextensions/experiments)
 to inject the ruler UI into compose windows, and ATN is not accepting new
-submissions that use Experiment APIs. As a result, Ruler Bar 2 is distributed
+submissions that use Experiment APIs. As a result, Ruler Bar is distributed
 directly from this repository's [GitHub Releases](../../releases).
 
 ### Install from a GitHub Release
 
 1. Open the [Releases page](../../releases) for this repository.
-2. Download the latest `ruler_bar_tb150.xpi` (or `ruler_bar_tb150.zip`) asset.
+2. Download the latest `ruler_bar.xpi` (or `ruler_bar.zip`) asset.
 3. In Thunderbird, open the add-on manager (`≡` menu → **Add-ons and Themes**).
 4. Click the gear icon and choose **Install Add-on From File…**.
 5. Select the downloaded XPI/ZIP and confirm the prompt to install an
@@ -45,7 +45,7 @@ attach the XPI/ZIP produced by `npm run build`. The tag, title, and notes
 follow this format:
 
 - **Tag**: `v<version>` matching `manifest.json` (for example `v0.7.0`).
-- **Title**: `Ruler Bar 2 <version>`.
+- **Title**: `Ruler Bar <version>`.
 - **Body**: short list of user-visible changes; link the diff against the
   previous tag (for example `…compare/v0.6.13...v0.7.0`) so reviewers can
   verify the change set.
@@ -57,13 +57,13 @@ To create a release, after merging the version bump and running
 npm run build
 git tag v0.7.0
 git push origin v0.7.0
-gh release create v0.7.0 dist/ruler_bar_tb150.xpi dist/ruler_bar_tb150.zip \
-  --title "Ruler Bar 2 0.7.0" \
+gh release create v0.7.0 dist/ruler_bar.xpi dist/ruler_bar.zip \
+  --title "Ruler Bar 0.7.0" \
   --notes-file - <<'EOF'
 See the commit history for the full change set.
 
-- Previous release: https://github.com/cwatanab/rulerbar2/releases/tag/v0.6.13
-- Diff: https://github.com/cwatanab/rulerbar2/compare/v0.6.13...v0.7.0
+- Previous release: https://github.com/cwatanab/rulerbar/releases/tag/v0.6.13
+- Diff: https://github.com/cwatanab/rulerbar/compare/v0.6.13...v0.7.0
 EOF
 ```
 
@@ -85,7 +85,7 @@ EOF
 
 The current caret position and the configured wrap column are highlighted on the ruler. The displayed position is generally close when composing plain-text messages with a monospace font. It can differ from the actual visual position when a long English word or URI crosses the wrap column, when using a proportional font, or when composing HTML messages.
 
-The visual-position option improves the cursor marker when Thunderbird exposes a useful caret rectangle. If that information is unavailable, Ruler Bar 2 falls back to logical column counting with the configured tab and non-ASCII widths.
+The visual-position option improves the cursor marker when Thunderbird exposes a useful caret rectangle. If that information is unavailable, Ruler Bar falls back to logical column counting with the configured tab and non-ASCII widths.
 
 ## Add-on Listing Copy
 
@@ -95,11 +95,11 @@ Short description:
 
 Long description:
 
-> Ruler Bar 2 adds a column ruler to Thunderbird message compose windows. It highlights the current caret position and the configured plain-text wrap column, making it easier to write fixed-width plain-text messages, check line length, and align text by column.
+> Ruler Bar adds a column ruler to Thunderbird message compose windows. It highlights the current caret position and the configured plain-text wrap column, making it easier to write fixed-width plain-text messages, check line length, and align text by column.
 >
 > The add-on includes settings for tab width, non-ASCII character width, ruler mark intervals, ruler scale, cursor opacity, and caret-position tracking. The wrap column marker can also be dragged directly in the compose window to update Thunderbird's wrap length setting.
 >
-> Ruler Bar 2 works best with plain-text messages and a monospace font. HTML messages, proportional fonts, and long unbroken words or URLs can still cause differences between the ruler and Thunderbird's exact rendered layout.
+> Ruler Bar works best with plain-text messages and a monospace font. HTML messages, proportional fonts, and long unbroken words or URLs can still cause differences between the ruler and Thunderbird's exact rendered layout.
 
 ## Project Notes
 
@@ -107,7 +107,7 @@ Long description:
 - WebExtension remake: cwatanab
 - This version uses a Manifest V3 WebExtension with a Thunderbird Experiment API.
 - Legacy XUL overlay files, `install.rdf`, and `chrome.manifest` are not used.
-- Ruler Bar 2 is not listed on addons.thunderbird.net (ATN) because ATN is not
+- Ruler Bar is not listed on addons.thunderbird.net (ATN) because ATN is not
   accepting new submissions that use Experiment APIs. See
   [Distribution](#distribution) for the GitHub Releases install path.
 
@@ -125,8 +125,8 @@ Create an installable XPI from the repository root:
 
 ```powershell
 New-Item -ItemType Directory -Force dist | Out-Null
-Compress-Archive -Force -Path manifest.json,icon.png,api,options,_locales -DestinationPath dist\ruler_bar_tb150.zip
-Copy-Item -Force dist\ruler_bar_tb150.zip dist\ruler_bar_tb150.xpi
+Compress-Archive -Force -Path manifest.json,icon.png,api,options,_locales -DestinationPath dist\ruler_bar.zip
+Copy-Item -Force dist\ruler_bar.zip dist\ruler_bar.xpi
 ```
 
 The generated files in `dist/` are ignored by Git.
@@ -139,7 +139,7 @@ MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
 
 ## 日本語
 
-Ruler Bar 2 は、従来の Thunderbird アドオン「Ruler Bar」を作り直した WebExtension 版です。
+Ruler Bar は、従来の Thunderbird アドオン「Ruler Bar」を作り直した WebExtension 版です。
 
 Thunderbird のメール作成ウィンドウにルーラーを表示し、現在のカーソル位置と、設定されているプレーンテキストの折り返し桁を確認しながら文章を書けるようにします。固定幅のテキストメールを作成する場合、桁位置をそろえたい場合、または Thunderbird の折り返し設定を目で確認したい場合に役立ちます。
 
@@ -161,7 +161,7 @@ Thunderbird のメール作成ウィンドウにルーラーを表示し、現�
 
 ## 配布
 
-Ruler Bar 2 は現在 **addons.thunderbird.net (ATN) には公開していません**。
+Ruler Bar は現在 **addons.thunderbird.net (ATN) には公開していません**。
 本アドオンは [Thunderbird Experiment API](https://developer.thunderbird.net/add-ons/mailextensions/experiments)
 をルーラーの UI 注入に使用しており、ATN では Experiment API を利用する新規
 アドオンの受付を停止しているためです。代わりに、本リポジトリの
@@ -170,7 +170,7 @@ Ruler Bar 2 は現在 **addons.thunderbird.net (ATN) には公開していませ
 ### GitHub Release からインストールする手順
 
 1. このリポジトリの [Releases ページ](../../releases) を開きます。
-2. 最新の `ruler_bar_tb150.xpi` (または `ruler_bar_tb150.zip`) をダウンロード
+2. 最新の `ruler_bar.xpi` (または `ruler_bar.zip`) をダウンロード
    します。
 3. Thunderbird のアドオンマネージャ (`≡` メニュー → **アドオンとテーマ**) を
    開きます。
@@ -186,7 +186,7 @@ Ruler Bar 2 は現在 **addons.thunderbird.net (ATN) には公開していませ
 います。
 
 - **タグ**: `manifest.json` のバージョンと一致する `v<version>` (例: `v0.7.0`)。
-- **タイトル**: `Ruler Bar 2 <version>`。
+- **タイトル**: `Ruler Bar <version>`。
 - **本文**: ユーザー視点の変更点を箇条書きし、前のタグとの差分リンク
   (例: `…compare/v0.6.13...v0.7.0`) を貼ります。
 
@@ -196,13 +196,13 @@ Ruler Bar 2 は現在 **addons.thunderbird.net (ATN) には公開していませ
 npm run build
 git tag v0.7.0
 git push origin v0.7.0
-gh release create v0.7.0 dist/ruler_bar_tb150.xpi dist/ruler_bar_tb150.zip `
-  --title "Ruler Bar 2 0.7.0" `
+gh release create v0.7.0 dist/ruler_bar.xpi dist/ruler_bar.zip `
+  --title "Ruler Bar 0.7.0" `
   --notes-file - <<'EOF'
 変更点の全一覧はコミット履歴を参照してください。
 
-- 前のリリース: https://github.com/cwatanab/rulerbar2/releases/tag/v0.6.13
-- 差分: https://github.com/cwatanab/rulerbar2/compare/v0.6.13...v0.7.0
+- 前のリリース: https://github.com/cwatanab/rulerbar/releases/tag/v0.6.13
+- 差分: https://github.com/cwatanab/rulerbar/compare/v0.6.13...v0.7.0
 EOF
 ```
 
@@ -234,7 +234,7 @@ EOF
 
 長い説明:
 
-> Ruler Bar 2 は、Thunderbird のメール作成ウィンドウに桁位置の目安となるルーラーを追加します。現在のカーソル位置と、プレーンテキストの折り返し桁をルーラー上に表示するため、固定幅のテキストメールを書いたり、行の長さを確認したり、桁位置をそろえたりしやすくなります。
+> Ruler Bar は、Thunderbird のメール作成ウィンドウに桁位置の目安となるルーラーを追加します。現在のカーソル位置と、プレーンテキストの折り返し桁をルーラー上に表示するため、固定幅のテキストメールを書いたり、行の長さを確認したり、桁位置をそろえたりしやすくなります。
 >
 > タブ幅、非 ASCII 文字幅、目盛りの間隔、目盛りの拡大率、カーソル表示の透過率、カーソル位置の追跡方法を設定できます。メール作成ウィンドウ上の折り返しマーカーをドラッグして、Thunderbird の折り返し桁を変更することもできます。
 >
@@ -246,7 +246,7 @@ EOF
 - WebExtension 版リメイク: cwatanab
 - この版は Manifest V3 WebExtension と Thunderbird Experiment API を使用しています。
 - 旧 XUL overlay ファイル、`install.rdf`、`chrome.manifest` は使用していません。
-- ATN が Experiment API を利用する新規アドオンを受付けていないため、Ruler Bar 2
+- ATN が Experiment API を利用する新規アドオンを受付けていないため、Ruler Bar
   は ATN には公開していません。インストール手順は [配布](#配布) セクションを
   参照してください。
 
@@ -264,8 +264,8 @@ npm run smoke
 
 ```powershell
 New-Item -ItemType Directory -Force dist | Out-Null
-Compress-Archive -Force -Path manifest.json,icon.png,api,options,_locales -DestinationPath dist\ruler_bar_tb150.zip
-Copy-Item -Force dist\ruler_bar_tb150.zip dist\ruler_bar_tb150.xpi
+Compress-Archive -Force -Path manifest.json,icon.png,api,options,_locales -DestinationPath dist\ruler_bar.zip
+Copy-Item -Force dist\ruler_bar.zip dist\ruler_bar.xpi
 ```
 
 生成される `dist/` 以下のファイルは Git の管理対象外です。
