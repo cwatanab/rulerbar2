@@ -31,7 +31,7 @@ directly from this repository's [GitHub Releases](../../releases).
 ### Install from a GitHub Release
 
 1. Open the [Releases page](../../releases) for this repository.
-2. Download the latest `ruler_bar.xpi` (or `ruler_bar.zip`) asset.
+2. Download the latest `ruler_bar-v<version>.xpi` (or `ruler_bar-v<version>.zip`) asset.
 3. In Thunderbird, open the add-on manager (`≡` menu → **Add-ons and Themes**).
 4. Click the gear icon and choose **Install Add-on From File…**.
 5. Select the downloaded XPI/ZIP and confirm the prompt to install an
@@ -55,15 +55,15 @@ To create a release, after merging the version bump and running
 
 ```powershell
 npm run build
-git tag v0.7.0
-git push origin v0.7.0
-gh release create v0.7.0 dist/ruler_bar.xpi dist/ruler_bar.zip \
-  --title "Ruler Bar 0.7.0" \
+git tag v0.7.1
+git push origin v0.7.1
+gh release create v0.7.1 dist/ruler_bar-v0.7.1.xpi dist/ruler_bar-v0.7.1.zip \
+  --title "Ruler Bar 0.7.1" \
   --notes-file - <<'EOF'
 See the commit history for the full change set.
 
-- Previous release: https://github.com/cwatanab/rulerbar/releases/tag/v0.6.13
-- Diff: https://github.com/cwatanab/rulerbar/compare/v0.6.13...v0.7.0
+- Previous release: https://github.com/cwatanab/rulerbar/releases/tag/v0.7.0
+- Diff: https://github.com/cwatanab/rulerbar/compare/v0.7.0...v0.7.1
 EOF
 ```
 
@@ -125,8 +125,8 @@ Create an installable XPI from the repository root:
 
 ```powershell
 New-Item -ItemType Directory -Force dist | Out-Null
-Compress-Archive -Force -Path manifest.json,icon.png,api,options,_locales -DestinationPath dist\ruler_bar.zip
-Copy-Item -Force dist\ruler_bar.zip dist\ruler_bar.xpi
+Compress-Archive -Force -Path manifest.json,icon.png,api,options,_locales -DestinationPath dist\ruler_bar-v0.7.1.zip
+Copy-Item -Force dist\ruler_bar-v0.7.1.zip dist\ruler_bar-v0.7.1.xpi
 ```
 
 The generated files in `dist/` are ignored by Git.
@@ -170,8 +170,8 @@ Ruler Bar は現在 **addons.thunderbird.net (ATN) には公開していませ�
 ### GitHub Release からインストールする手順
 
 1. このリポジトリの [Releases ページ](../../releases) を開きます。
-2. 最新の `ruler_bar.xpi` (または `ruler_bar.zip`) をダウンロード
-   します。
+2. 最新の `ruler_bar-v<version>.xpi` (または `ruler_bar-v<version>.zip`)
+   をダウンロードします。
 3. Thunderbird のアドオンマネージャ (`≡` メニュー → **アドオンとテーマ**) を
    開きます。
 4. 歯車アイコンから **ファイルからアドオンをインストール…** を選択します。
@@ -194,15 +194,15 @@ Ruler Bar は現在 **addons.thunderbird.net (ATN) には公開していませ�
 
 ```powershell
 npm run build
-git tag v0.7.0
-git push origin v0.7.0
-gh release create v0.7.0 dist/ruler_bar.xpi dist/ruler_bar.zip `
-  --title "Ruler Bar 0.7.0" `
+git tag v0.7.1
+git push origin v0.7.1
+gh release create v0.7.1 dist/ruler_bar-v0.7.1.xpi dist/ruler_bar-v0.7.1.zip `
+  --title "Ruler Bar 0.7.1" `
   --notes-file - <<'EOF'
 変更点の全一覧はコミット履歴を参照してください。
 
-- 前のリリース: https://github.com/cwatanab/rulerbar/releases/tag/v0.6.13
-- 差分: https://github.com/cwatanab/rulerbar/compare/v0.6.13...v0.7.0
+- 前のリリース: https://github.com/cwatanab/rulerbar/releases/tag/v0.7.0
+- 差分: https://github.com/cwatanab/rulerbar/compare/v0.7.0...v0.7.1
 EOF
 ```
 
@@ -264,8 +264,8 @@ npm run smoke
 
 ```powershell
 New-Item -ItemType Directory -Force dist | Out-Null
-Compress-Archive -Force -Path manifest.json,icon.png,api,options,_locales -DestinationPath dist\ruler_bar.zip
-Copy-Item -Force dist\ruler_bar.zip dist\ruler_bar.xpi
+Compress-Archive -Force -Path manifest.json,icon.png,api,options,_locales -DestinationPath dist\ruler_bar-v0.7.1.zip
+Copy-Item -Force dist\ruler_bar-v0.7.1.zip dist\ruler_bar-v0.7.1.xpi
 ```
 
 生成される `dist/` 以下のファイルは Git の管理対象外です。

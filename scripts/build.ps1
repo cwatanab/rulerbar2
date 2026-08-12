@@ -2,10 +2,11 @@ $ErrorActionPreference = "Stop"
 
 $root = Split-Path -Parent $PSScriptRoot
 $dist = Join-Path $root "dist"
-$zip = Join-Path $dist "ruler_bar.zip"
-$xpi = Join-Path $dist "ruler_bar.xpi"
+$version = (Get-Content -Raw (Join-Path $root "manifest.json") | ConvertFrom-Json).version
+$zip = Join-Path $dist "ruler_bar-v$version.zip"
+$xpi = Join-Path $dist "ruler_bar-v$version.xpi"
 $tempDir = Join-Path ([System.IO.Path]::GetTempPath()) "rulerbar"
-$tempZip = Join-Path $tempDir ("ruler_bar.{0}.zip" -f [Guid]::NewGuid().ToString("N"))
+$tempZip = Join-Path $tempDir ("ruler_bar-v{0}.{1}.zip" -f $version, [Guid]::NewGuid().ToString("N"))
 
 New-Item -ItemType Directory -Force -Path $dist | Out-Null
 New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
