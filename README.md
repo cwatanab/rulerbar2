@@ -27,53 +27,6 @@ Thunderbird のメール作成ウィンドウにルーラーを表示し、現�
 - プレーンテキストメールを等幅フォントで作成する場合に、もっとも安定した表示になります。
 - HTML メールやプロポーショナルフォントでも目安として表示できますが、実際の描画位置と完全には一致しない場合があります。
 
-## 配布
-
-Ruler Bar は現在 **addons.thunderbird.net (ATN) には公開していません**。
-本アドオンは [Thunderbird Experiment API](https://developer.thunderbird.net/add-ons/mailextensions/experiments)
-をルーラーの UI 注入に使用しており、ATN では Experiment API を利用する新規
-アドオンの受付を停止しているためです。代わりに、本リポジトリの
-[GitHub Releases](../../releases) から直接配布しています。
-
-### GitHub Release からインストールする手順
-
-1. このリポジトリの [Releases ページ](../../releases) を開きます。
-2. 最新の `ruler_bar-v<version>.xpi` (または `ruler_bar-v<version>.zip`)
-   をダウンロードします。
-3. Thunderbird のアドオンマネージャ (`≡` メニュー → **アドオンとテーマ**) を
-   開きます。
-4. 歯車アイコンから **ファイルからアドオンをインストール…** を選択します。
-5. ダウンロードした XPI/ZIP を選び、サードパーティ製アドオンのインストール
-   確認に同意します。
-6. 開いている作成ウィンドウがあれば再起動し、ルーラーを再接続します。
-
-### リリースの作成
-
-リリースはアドオンのバージョン (`v0.7.0` など) でタグ付けし、`npm run build` で
-生成された XPI/ZIP をアタッチします。タグ・タイトル・本文は次の形式に揃えて
-います。
-
-- **タグ**: `manifest.json` のバージョンと一致する `v<version>` (例: `v0.7.0`)。
-- **タイトル**: `Ruler Bar <version>`。
-- **本文**: ユーザー視点の変更点を箇条書きし、前のタグとの差分リンク
-  (例: `…compare/v0.6.13...v0.7.0`) を貼ります。
-
-バージョンをバンプしてマージした後、次のようにリリースを作成します。
-
-```powershell
-npm run build
-git tag v0.7.1
-git push origin v0.7.1
-gh release create v0.7.1 dist/ruler_bar-v0.7.1.xpi dist/ruler_bar-v0.7.1.zip `
-  --title "Ruler Bar 0.7.1" `
-  --notes-file - <<'EOF'
-変更点の全一覧はコミット履歴を参照してください。
-
-- 前のリリース: https://github.com/cwatanab/rulerbar/releases/tag/v0.7.0
-- 差分: https://github.com/cwatanab/rulerbar/compare/v0.7.0...v0.7.1
-EOF
-```
-
 ## 設定項目
 
 | 設定 | 既定値 | 説明 |
@@ -101,7 +54,7 @@ EOF
 - この版は Manifest V3 WebExtension と Thunderbird Experiment API を使用しています。
 - 旧 XUL overlay ファイル、`install.rdf`、`chrome.manifest` は使用していません。
 - ATN が Experiment API を利用する新規アドオンを受付けていないため、Ruler Bar
-  は ATN には公開していません。インストール手順は [配布](#配布) セクションを
+  は ATN には公開していません。インストール手順は文頭の注意書きを
   参照してください。
 
 ## ビルド
