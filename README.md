@@ -1,143 +1,11 @@
 # Ruler Bar
 
-Ruler Bar is a Thunderbird WebExtension remake of the legacy Ruler Bar add-on.
-
-It adds a ruler to Thunderbird message compose windows so you can see the current caret position and the configured plain-text wrap column while writing. It is intended for users who compose fixed-width plain-text messages, align text by column, or want a visible guide for Thunderbird's wrap length setting.
-
-## Features
-
-- Shows a horizontal ruler in message compose windows.
-- Highlights the current caret position.
-- Marks Thunderbird's configured wrap column from `mailnews.wraplength`.
-- Lets you drag the wrap marker to change the wrap column.
-- Supports configurable tab width and non-ASCII character width for logical column counting.
-- Can track the caret by its visual rectangle when Thunderbird exposes that information, with a logical-column fallback.
-- Provides an options page for display, measurement, and advanced ruler settings.
-
-## Compatibility
-
-- The manifest currently allows Thunderbird 128 through 200.*.
-- Plain-text composition with a monospace font gives the most predictable result.
-- HTML composition and proportional fonts are supported as best-effort visual guides, but the ruler can differ from the exact rendered text position.
-
-## Distribution
-
-Ruler Bar is **not currently listed on addons.thunderbird.net (ATN)**.
-The add-on uses a [Thunderbird Experiment API](https://developer.thunderbird.net/add-ons/mailextensions/experiments)
-to inject the ruler UI into compose windows, and ATN is not accepting new
-submissions that use Experiment APIs. As a result, Ruler Bar is distributed
-directly from this repository's [GitHub Releases](../../releases).
-
-### Install from a GitHub Release
-
-1. Open the [Releases page](../../releases) for this repository.
-2. Download the latest `ruler_bar-v<version>.xpi` (or `ruler_bar-v<version>.zip`) asset.
-3. In Thunderbird, open the add-on manager (`≡` menu → **Add-ons and Themes**).
-4. Click the gear icon and choose **Install Add-on From File…**.
-5. Select the downloaded XPI/ZIP and confirm the prompt to install an
-   unsigned/third-party add-on.
-6. Restart any open compose windows so the ruler attaches to the editor.
-
-### Releases
-
-Releases are tagged with the add-on version (for example `v0.7.0`) and
-attach the XPI/ZIP produced by `npm run build`. The tag, title, and notes
-follow this format:
-
-- **Tag**: `v<version>` matching `manifest.json` (for example `v0.7.0`).
-- **Title**: `Ruler Bar <version>`.
-- **Body**: short list of user-visible changes; link the diff against the
-  previous tag (for example `…compare/v0.6.13...v0.7.0`) so reviewers can
-  verify the change set.
-
-To create a release, after merging the version bump and running
-`npm run build`:
-
-```powershell
-npm run build
-git tag v0.7.1
-git push origin v0.7.1
-gh release create v0.7.1 dist/ruler_bar-v0.7.1.xpi dist/ruler_bar-v0.7.1.zip \
-  --title "Ruler Bar 0.7.1" \
-  --notes-file - <<'EOF'
-See the commit history for the full change set.
-
-- Previous release: https://github.com/cwatanab/rulerbar/releases/tag/v0.7.0
-- Diff: https://github.com/cwatanab/rulerbar/compare/v0.7.0...v0.7.1
-EOF
-```
-
-## Settings
-
-| Setting | Default | Description |
-| --- | ---: | --- |
-| Track the caret by exact visual position | On | Uses the caret rectangle when available, then falls back to logical column counting. |
-| Loop the cursor at the wrap column | On | Keeps the cursor indicator within the configured wrap width for wrapped plain-text composition. |
-| Tab width | 8 columns | Counts tab characters as this many logical columns. |
-| Non-ASCII width | 2 columns | Counts Japanese and other non-ASCII characters as this many logical columns. |
-| Numbered mark interval | 20 columns | Shows numeric ruler labels at this interval. |
-| Minor mark interval | 2 columns | Shows smaller tick marks at this interval. |
-| Ruler scale | 100% | Adjusts the visual spacing of ruler marks. |
-| Cursor opacity | 100% | Adjusts the current-position indicator visibility. |
-| Maximum columns | 300 columns | Sets the minimum upper limit for generated ruler marks. |
-
-## Accuracy and Limitations
-
-The current caret position and the configured wrap column are highlighted on the ruler. The displayed position is generally close when composing plain-text messages with a monospace font. It can differ from the actual visual position when a long English word or URI crosses the wrap column, when using a proportional font, or when composing HTML messages.
-
-The visual-position option improves the cursor marker when Thunderbird exposes a useful caret rectangle. If that information is unavailable, Ruler Bar falls back to logical column counting with the configured tab and non-ASCII widths.
-
-## Add-on Listing Copy
-
-Short description:
-
-> Adds a configurable ruler to Thunderbird compose windows, showing the caret position and wrap column.
-
-Long description:
-
-> Ruler Bar adds a column ruler to Thunderbird message compose windows. It highlights the current caret position and the configured plain-text wrap column, making it easier to write fixed-width plain-text messages, check line length, and align text by column.
->
-> The add-on includes settings for tab width, non-ASCII character width, ruler mark intervals, ruler scale, cursor opacity, and caret-position tracking. The wrap column marker can also be dragged directly in the compose window to update Thunderbird's wrap length setting.
->
-> Ruler Bar works best with plain-text messages and a monospace font. HTML messages, proportional fonts, and long unbroken words or URLs can still cause differences between the ruler and Thunderbird's exact rendered layout.
-
-## Project Notes
-
-- Original add-on: [Ruler Bar](https://github.com/piroor/rulerbar) by YUKI "Piro" Hiroshi
-- WebExtension remake: cwatanab
-- This version uses a Manifest V3 WebExtension with a Thunderbird Experiment API.
-- Legacy XUL overlay files, `install.rdf`, and `chrome.manifest` are not used.
-- Ruler Bar is not listed on addons.thunderbird.net (ATN) because ATN is not
-  accepting new submissions that use Experiment APIs. See
-  [Distribution](#distribution) for the GitHub Releases install path.
-
-## Build
-
-If Node.js and PowerShell 7 are available, run the smoke check. It validates the
-extension metadata, locale coverage, option wiring, and creates the installable
-XPI:
-
-```powershell
-npm run smoke
-```
-
-Create an installable XPI from the repository root:
-
-```powershell
-New-Item -ItemType Directory -Force dist | Out-Null
-Compress-Archive -Force -Path manifest.json,icon.png,api,options,_locales -DestinationPath dist\ruler_bar-v0.7.1.zip
-Copy-Item -Force dist\ruler_bar-v0.7.1.zip dist\ruler_bar-v0.7.1.xpi
-```
-
-The generated files in `dist/` are ignored by Git.
-
-## License
-
-This project is distributed under the same tri-license as the original [Ruler Bar](https://github.com/piroor/rulerbar):
-
-MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later
-
-## 日本語
+> [!IMPORTANT]
+> Ruler Bar は現在 **addons.thunderbird.net (ATN) には公開していません**。
+> 本アドオンは [Thunderbird Experiment API](https://developer.thunderbird.net/add-ons/mailextensions/experiments)
+> をルーラーの UI 注入に使用しており、ATN では Experiment API を利用する新規
+> アドオンの受付を停止しているためです。代わりに、本リポジトリの
+> [GitHub Releases](../../releases) から直接配布しています。
 
 Ruler Bar は、従来の Thunderbird アドオン「Ruler Bar」を作り直した WebExtension 版です。
 
@@ -225,20 +93,6 @@ EOF
 現在のカーソル位置と、設定されている折り返し位置をルーラー上で強調表示します。プレーンテキストメールを等幅フォントで作成している場合は、おおむね実際の位置に近い表示になります。ただし、折り返し位置に長い英単語や URI がある場合、プロポーショナルフォントを使用している場合、または HTML メールを作成している場合は、表示位置が実際の見た目とずれることがあります。
 
 見た目の位置で追跡する設定を有効にすると、Thunderbird から取得できるカーソル矩形を使ってカーソルマーカーを表示します。カーソル矩形を取得できない場合は、設定されたタブ幅と非 ASCII 文字幅にもとづく論理桁で表示します。
-
-## アドオンページ掲載文
-
-短い説明:
-
-> Thunderbird のメール作成ウィンドウに、カーソル位置と折り返し桁を示す設定可能なルーラーを表示します。
-
-長い説明:
-
-> Ruler Bar は、Thunderbird のメール作成ウィンドウに桁位置の目安となるルーラーを追加します。現在のカーソル位置と、プレーンテキストの折り返し桁をルーラー上に表示するため、固定幅のテキストメールを書いたり、行の長さを確認したり、桁位置をそろえたりしやすくなります。
->
-> タブ幅、非 ASCII 文字幅、目盛りの間隔、目盛りの拡大率、カーソル表示の透過率、カーソル位置の追跡方法を設定できます。メール作成ウィンドウ上の折り返しマーカーをドラッグして、Thunderbird の折り返し桁を変更することもできます。
->
-> プレーンテキストメールと等幅フォントでの利用に最適化しています。HTML メール、プロポーショナルフォント、長い英単語や URL を含む行では、ルーラー上の表示と Thunderbird の実際の描画位置がずれる場合があります。
 
 ## メモ
 
